@@ -1,7 +1,6 @@
 /* This is the data we will be using to create our article components */
 /* Look over this data, then proceed to line 91*/
-const data = [
-  {
+const data = [{
     title: 'Lambda School Students: "We\'re the best!"',
     date: 'Nov 5th, 2018',
     firstParagraph: `Lucas ipsum dolor sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek. Ben amidala secura skywalker lando
@@ -112,3 +111,41 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createComponent(title, date, first, sec, third) {
+  let div = document.createElement('div');
+  let h1 = document.createElement('h2');
+  let time = document.createElement('p');
+  let paraOne = document.createElement('p');
+  let paraTwo = document.createElement('p');
+  let paraThree = document.createElement('p');
+  let span = document.createElement('span');
+
+  div.appendChild(h1);
+  div.appendChild(time);
+  div.appendChild(paraOne);
+  div.appendChild(paraTwo);
+  div.appendChild(paraThree);
+  div.prepend(span);
+
+  h1.textContent = title;
+  time.textContent = date;
+  paraOne.textContent = first;
+  paraTwo.textContent = sec;
+  paraThree.textContent = third;
+  span.textContent = 'Article Toggle 1';
+
+  div.classList.add('article');
+  span.classList.add('expandButton');
+  time.classList.add('date');
+
+  span.addEventListener('click', (event) => {
+    div.classList.toggle("article-open");
+  })
+  return div;
+}
+
+let container = document.querySelector('.articles');
+
+const articleOne = createComponent(data[0].title, data[0].date, data[0].firstParagraph, data[0].secondParagraph, data[0].thirdParagraph);
+container.appendChild(articleOne);
