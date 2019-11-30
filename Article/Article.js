@@ -133,7 +133,7 @@ function createComponent(title, date, first, sec, third) {
   paraOne.textContent = first;
   paraTwo.textContent = sec;
   paraThree.textContent = third;
-  span.textContent = 'Article Toggle 1';
+  span.textContent = 'Article Toggle';
 
   div.classList.add('article');
   span.classList.add('expandButton');
@@ -148,4 +148,16 @@ function createComponent(title, date, first, sec, third) {
 let container = document.querySelector('.articles');
 
 const articleOne = createComponent(data[0].title, data[0].date, data[0].firstParagraph, data[0].secondParagraph, data[0].thirdParagraph);
-container.appendChild(articleOne);
+const articleTwo = createComponent(data[1].title, data[1].date, data[1].firstParagraph, data[1].secondParagraph, data[1].thirdParagraph);
+const articleThree = createComponent(data[2].title, data[2].date, data[2].firstParagraph, data[2].secondParagraph, data[2].thirdParagraph);
+const articleFour = createComponent(data[3].title, data[3].date, data[3].firstParagraph, data[3].secondParagraph, data[3].thirdParagraph);
+container.prepend(articleOne, articleTwo, articleThree, articleFour);
+
+// let articleArray = data.map((item) => {
+//   let newArticle = createComponent(item);
+//   return newArticle;
+// })
+
+// articleArray.forEach(newArticle => {
+//   container.appendChild(newArticle);
+// })
