@@ -139,7 +139,7 @@ function createComponent(title, date, first, sec, third) {
   span.classList.add('expandButton');
   time.classList.add('date');
 
-  span.addEventListener('click', (event) => {
+  span.addEventListener('click', () => {
     div.classList.toggle("article-open");
   })
   return div;
@@ -147,11 +147,15 @@ function createComponent(title, date, first, sec, third) {
 
 let container = document.querySelector('.articles');
 
-const articleOne = createComponent(data[0].title, data[0].date, data[0].firstParagraph, data[0].secondParagraph, data[0].thirdParagraph);
-const articleTwo = createComponent(data[1].title, data[1].date, data[1].firstParagraph, data[1].secondParagraph, data[1].thirdParagraph);
-const articleThree = createComponent(data[2].title, data[2].date, data[2].firstParagraph, data[2].secondParagraph, data[2].thirdParagraph);
-const articleFour = createComponent(data[3].title, data[3].date, data[3].firstParagraph, data[3].secondParagraph, data[3].thirdParagraph);
-container.prepend(articleOne, articleTwo, articleThree, articleFour);
+data.forEach(stuff => {
+  container.appendChild(createComponent(stuff.title, stuff.date, stuff.firstParagraph, stuff.secondParagraph, stuff.thirdParagraph))
+})
+
+// const articleOne = createComponent(data[0].title, data[0].date, data[0].firstParagraph, data[0].secondParagraph, data[0].thirdParagraph);
+// const articleTwo = createComponent(data[1].title, data[1].date, data[1].firstParagraph, data[1].secondParagraph, data[1].thirdParagraph);
+// const articleThree = createComponent(data[2].title, data[2].date, data[2].firstParagraph, data[2].secondParagraph, data[2].thirdParagraph);
+// const articleFour = createComponent(data[3].title, data[3].date, data[3].firstParagraph, data[3].secondParagraph, data[3].thirdParagraph);
+// container.prepend(articleOne, articleTwo, articleThree, articleFour);
 
 // let articleArray = data.map((item) => {
 //   let newArticle = createComponent(item);
